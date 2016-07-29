@@ -8,3 +8,5 @@ Ubuntu16.04 is required, optimized for China using aliyun based ubuntu source
     ansible-playbook -i playbooks/hosts/docker playbooks/docker.yml
 
 ## Provision Rancher
+
+    http://docs.rancher.com/rancher/latest/en/installing-rancher/installing-server/
