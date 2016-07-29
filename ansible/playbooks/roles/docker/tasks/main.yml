@@ -11,10 +11,14 @@
 - name: install ca-certificates
   apt: name=ca-certificates state=latest
 
-- name: install linux-image-extra
-  shell: apt-get install linux-image-extra-$(uname -r)
+- name: add apt-key for docker engine
+  shell: apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 
-- include: registry-mirror.yml
+- shell: uname -r
+  register: uname_value
+
+- name: install linux-image-extra
+  apt: name=linux-image-extra-{{ uname_value.stdout }} state=present
 
 #- name: install docker-engine
 #  apt: name=docker-engine state=latest
@@ -22,4 +26,5 @@
 
 - name: install docker
   shell: curl -sSL http://acs-public-mirror.oss-cn-hangzhou.aliyuncs.com/docker-engine/internet | sh -
-  notify: start docker
+
+- include: registry-mirror.yml
