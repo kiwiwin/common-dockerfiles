@@ -1,0 +1,4 @@
+---
+
+- name: start docker
+  shell: service docker restart; systemctl daemon-reload; systemctl restart docker

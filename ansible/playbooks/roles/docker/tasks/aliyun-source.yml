@@ -1,0 +1,2 @@
+- name: replace default ubuntu16.04 source with aliyun source
+  copy: src=sources.list dest=/etc/apt/sources.list force=yes

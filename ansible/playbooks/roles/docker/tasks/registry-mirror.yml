@@ -1,0 +1,8 @@
+- name: create docker.service.d directory replace
+  shell: mkdir -p /etc/systemd/system/docker.service.d
+
+- name: dockerhub with registry-mirror accelerator
+  template: src=mirror.conf.j2 dest=/etc/systemd/system/docker.service.d/mirror.conf
+
+- name: overwrite DOCKER_OPTS
+  template: src=docker.j2 dest=/etc/default/docker

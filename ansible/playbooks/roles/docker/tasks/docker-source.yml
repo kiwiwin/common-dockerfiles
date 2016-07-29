@@ -1,0 +1,2 @@
+- name: add docker source list
+  copy: src=docker.list dest=/etc/apt/sources.list.d/docker.list force=yes

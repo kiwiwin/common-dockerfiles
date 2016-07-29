@@ -1,0 +1,6 @@
+- hosts: docker
+  sudo: yes
+  roles:
+    - docker
+  vars:
+    registry_mirror: https://9pukxhyh.mirror.aliyuncs.com
