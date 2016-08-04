@@ -11,5 +11,3 @@
   sudo: yes
   roles:
     - zookeeper
-  vars:
-    servers: node-1,node-2,node-3

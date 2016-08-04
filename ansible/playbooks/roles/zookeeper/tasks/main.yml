@@ -11,19 +11,20 @@
 - name: deploy zookeeper
   docker:
     name: mesos-zookeeper
-    image: mesoscloud/zookeeper:3.4.8-ubuntu-14.04
+    image: mesoscloud/zookeeper:3.4.8-ubuntu
     net: host
     expose:
+    - 2181
     - 2888
     - 3888
-    - 2181
     ports:
+    - "2181:2181"
     - "2888:2888"
     - "3888:3888"
-    - "2181:2181"
     volumes:
     - /var/data/zookeeper:/tmp/zookeeper
     restart_policy: always
     env:
-      MYID: "{{ myid }}"
-      SERVERS: "{{ servers }}"
+      MYID: "{{ zookeeper_myid }}"
+      SERVERS: "{{ zookeeper_servers }}"
+    state: restarted
