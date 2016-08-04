@@ -1,0 +1,29 @@
+- name: install pip
+  apt: name=python-pip state=latest update_cache=yes cache_valid_time=1209600
+
+- name: install docker-py
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - six
+    - docker-py
+
+- name: deploy zookeeper
+  docker:
+    name: mesos-zookeeper
+    image: mesoscloud/zookeeper:3.4.8-ubuntu-14.04
+    net: host
+    expose:
+    - 2888
+    - 3888
+    - 2181
+    ports:
+    - "2888:2888"
+    - "3888:3888"
+    - "2181:2181"
+    volumes:
+    - /var/data/zookeeper:/tmp/zookeeper
+    restart_policy: always
+    env:
+      MYID: "{{ myid }}"
+      SERVERS: "{{ servers }}"

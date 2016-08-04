@@ -1,6 +1,15 @@
-- hosts: docker
+# CAN ONLY RUN ONCE
+#- hosts: docker
+#  sudo: yes
+#  roles:
+#    - docker
+#  vars:
+#    registry_mirror: https://9pukxhyh.mirror.aliyuncs.com
+
+
+- hosts: zookeeper
   sudo: yes
   roles:
-    - docker
+    - zookeeper
   vars:
-    registry_mirror: https://9pukxhyh.mirror.aliyuncs.com
+    servers: node-1,node-2,node-3
