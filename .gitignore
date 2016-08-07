@@ -1,3 +1,7 @@
 .idea/
 ansible/playbooks/hosts/
 *.retry
+*.pem
+*.key
+dcos_generate_config.sh
+ssh_keys/

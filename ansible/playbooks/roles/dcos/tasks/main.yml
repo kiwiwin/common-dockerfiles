@@ -1,0 +1,35 @@
+- name: create directory for /genconf
+  file: path=/genconf state=directory
+
+- name: copy /genconf/ip-detect
+  copy: src=ip-detect dest=/genconf/ip-detect
+
+- name: copy /genconf/config.yaml
+  template: src=config.yaml.j2 dest=/genconf/config.yaml
+
+- name: copy /genconf/ssh_key
+  copy: src=dcos.key dest=/genconf/ssh_key mode=0600
+
+#- name: download dcos_generate_config.sh
+#  get_url: url=http://soda-vm.oss-cn-qingdao.aliyuncs.com/dcos_generate_config.sh dest=dcos_generate_config.sh mode=777
+
+- name: copy /dcos_generate_config.sh
+  copy: src=dcos_generate_config.sh dest=/dcos_generate_config.sh mode=777
+
+- name: execute genconf
+  shell: bash /dcos_generate_config.sh --genconf chdir=/
+
+- name: install prerequisites
+  shell: bash /dcos_generate_config.sh --install-prereqs chdir=/
+
+- name: execute preflight
+  shell: bash /dcos_generate_config.sh --preflight chdir=/
+
+- name: install dcos
+  shell: bash /dcos_generate_config.sh --deploy chdir=/
+
+- name: verify running
+  shell: bash /dcos_generate_config.sh --postflight chdir=/
+
+
+

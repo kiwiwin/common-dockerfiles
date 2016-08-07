@@ -1,0 +1,24 @@
+- hosts: dcos_master
+#  sudo: yes
+#  roles:
+#    - dcos_pre
+#    - docker
+#  vars:
+#    registry_mirror: https://9pukxhyh.mirror.aliyuncs.com
+
+
+- hosts: dcos_agent
+#  sudo: yes
+#  roles:
+#    - dcos_pre
+#    - docker
+#  vars:
+#    registry_mirror: https://9pukxhyh.mirror.aliyuncs.com
+
+
+- hosts: dcos
+  sudo: yes
+  roles:
+    - dcos
+  vars:
+    dcos_user: soda

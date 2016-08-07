@@ -1,0 +1,18 @@
+---
+agent_list:
+{% for host in groups['dcos_agent'] %}
+- {{ hostvars[host]['ansible_eth0']['ipv4']['address'] }}
+{% endfor %}
+# Use this bootstrap_url value unless you have moved the DC/OS installer assets.
+# bootstrap_url: file:///opt/dcos_install_tmp
+cluster_name: dcos
+master_discovery: static
+master_list:
+{% for host in groups['dcos_master'] %}
+- {{ hostvars[host]['ansible_eth0']['ipv4']['address'] }}
+{% endfor %}
+#resolvers:
+#- 8.8.4.4
+#- 8.8.8.8
+ssh_port: 22
+ssh_user: {{ dcos_user }}

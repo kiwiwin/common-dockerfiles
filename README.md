@@ -6,6 +6,12 @@ Ubuntu16.04 is required, optimized for China using aliyun based ubuntu source
 
 2.1.1
 
+## Provision DCOS
+
+### references
+* https://docs.mesosphere.com/1.7/administration/installing/custom/cli/    
+* http://docs.ansible.com/ansible/faq.html#how-do-i-loop-over-a-list-of-hosts-in-a-group-inside-of-a-template
+
 ## Provision Docker Engine with Host
 
     cd ansible
@@ -40,4 +46,7 @@ Ubuntu16.04 is required, optimized for China using aliyun based ubuntu source
 ### references 
 * http://docs.ansible.com/ansible/docker_module.html
 * http://stackoverflow.com/questions/30940981/zookeeper-error-cannot-open-channel-to-x-at-election-address
+
+## Trouble Shooting
+* fix the prompt ssh key dialog: http://stackoverflow.com/questions/37690054/python-and-openssl-version-reference-issue-on-osx
                         
