@@ -11,8 +11,8 @@
 - name: install ca-certificates
   apt: name=ca-certificates state=latest
 
-- name: add apt-key for docker engine
-  shell: apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+#- name: add apt-key for docker engine
+#  shell: apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 
 - shell: uname -r
   register: uname_value

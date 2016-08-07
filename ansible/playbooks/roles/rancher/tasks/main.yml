@@ -1,0 +1,24 @@
+- name: install pip
+  apt: name=python-pip state=latest update_cache=yes
+#   cache_valid_time=1209600
+
+- name: upgrade pip
+  pip: name=pip state=latest
+
+- name: install docker-py
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - six
+    - docker-py
+
+- name: deploy rancher
+  docker:
+    name: rancher-mgr
+    image: rancher/server:stable
+    ports:
+    - "8080:8080"
+    volumes:
+    - /var/data/mysql:/var/lib/mysql
+    restart_policy: always
+    state: restarted
