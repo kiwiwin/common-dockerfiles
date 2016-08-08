@@ -6,6 +6,18 @@ Ubuntu16.04 is required, optimized for China using aliyun based ubuntu source
 
 2.1.1
 
+## Provision Rancher
+
+### references
+#### rancher communication
+* http://docs.rancher.com/rancher/latest/en/faqs/troubleshooting/#cross-host-communication
+* http://docs.rancher.com/rancher/latest/en/faqs/troubleshooting/#are-the-ips-of-the-hosts-correct-in-the-ui
+* https://forums.rancher.com/t/rancher-architecture-and-communication/2490/8
+#### rancher env
+http://docs.rancher.com/rancher/latest/en/cattle/rancher-compose/environment-interpolation/
+
+
+
 ## Provision DCOS
 
 ### references
